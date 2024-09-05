@@ -1,5 +1,5 @@
-import BackButton from './BackButton'
-import NextButton from './NextButton'
+import BackButton from '../buttons/BackButton'
+import NextButton from '../buttons/NextButton'
 
 type Props = {
     passos: string[],

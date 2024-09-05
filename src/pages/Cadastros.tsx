@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import Stepper from "../components/Stepper";
-import StepperControl from "../components/StepperControl";
-import PessoaFisicaForm from '../components/steps/PessoaFisicaForm'
+import Stepper from "../components/stepper/Stepper"
+import StepperControl from "../components/stepper/StepperControl"
+import PessoaJuridicaForm from "../components/steps/PessoaJuridicaForm"
 import EnderecoForm from '../components/steps/EnderecoForm'
 import TelefonesForm from '../components/steps/TelefonesForm'
 import FinalizarCadastro from '../components/steps/FinalizarCadastro'
 import { useState } from "react";
 import { StepperContext } from "../contexts/stepperContext";
+
 
 export default function Cadastros() {
     const [passoAtual, setPassoAtual] = useState(1)
@@ -26,7 +27,7 @@ export default function Cadastros() {
     const exibirPasso = (passo: number) => {
         switch(passo) {
         case 1:
-            return <PessoaFisicaForm />
+            return <PessoaJuridicaForm />
         case 2:
             return <EnderecoForm />
         case 3:
@@ -50,6 +51,10 @@ export default function Cadastros() {
         <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl p-8 pb-2 mt-5 bg-white">
             {/* Stepper */}
             <div className="container horizontal mt-5 mb-11">
+                <Stepper
+                    passos={passos}
+                    passoAtual={passoAtual}
+                />
                 <div className="my-10 p-10">
                     <StepperContext.Provider value={{
                         dadosPessoais,
@@ -64,11 +69,6 @@ export default function Cadastros() {
                         {exibirPasso(passoAtual)}
                     </StepperContext.Provider>
                 </div>
-
-                <Stepper
-                    passos={passos}
-                    passoAtual={passoAtual}
-                />
             </div>
 
                 {/* Stepper Controls */}
