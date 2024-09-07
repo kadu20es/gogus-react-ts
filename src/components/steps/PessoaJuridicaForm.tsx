@@ -1,23 +1,9 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
-import { useState } from "react"
-
-const createUserFormSchema = z.object({
-        nm_fantasia: z.string()
-            .min(10, "Nome fantasia é um dado obrigatório."),
-        rz_social: z.string()
-            .min(10, "Razão Social é um dado obrigatório."),
-        cnpj: z.string()
-            .min(14, "CNPJ é um dado obrigatório."),
-        ie: z.string()
-            .min(9, "Inscrição Estadual é um dado obrigatório."),
-        email: z.string()
-            .email("Formato de e-mail inválido")
-            .toLowerCase(),
-        contato: z.string(),
-        status: z.enum(['ativo','inativo']),
-    })
+import { useEffect, useState } from "react"
+import { createUserFormSchema } from "../../utils/validations"
+import { cnpjMask, cpfmask } from "../../utils/cpfMask"
 
 type CreateUserFormData = z.infer<typeof createUserFormSchema>
 
@@ -33,18 +19,50 @@ export default function PessoaJuridicaForm() {
     const {
         register,
         handleSubmit,
+        trigger,
         formState: {errors},
-        control
+        control,
+        watch,
+        setValue
     } = useForm<CreateUserFormData>({
-        resolver: zodResolver(createUserFormSchema)
+        resolver: zodResolver(createUserFormSchema),
+        mode: "all",
+        criteriaMode: "all",
+        defaultValues: {
+            pessoaJuridica: {
+                nm_fantasia: "",
+                rz_social: "",
+                cnpj: "",
+                ie: "",
+                email: "",
+                contato: "",
+                status: "ativo"
+            }
+
+        }
     })
 
     function createPessoaJuridica(data: any) {
         setOutput(JSON.stringify(data, null, 2))
     }
 
+    /*
+    const handleOnChange = (
+        value: string,
+        onChange: (...event: string[]) => void
+    ) => {
+        onChange(value)
+        trigger()
+    }*/
+
+    const cnpjValue: string = watch("pessoaJuridica.cnpj")
+
+    useEffect(() => {
+        setValue("pessoaJuridica.cnpj", cnpjMask(cnpjValue))
+    },[cnpjValue, setValue])
+
     return (
-        <div className="flex flex-col h-[50vh]">
+        <div className="flex flex-col h-[60vh]">
             <h1 className="text-2xl antialiased font-bold text-center">Cadastro de pessoa jurídica</h1>
             <form
                 className="flex flex-col gap-4 w-full mt-8"
@@ -59,8 +77,8 @@ export default function PessoaJuridicaForm() {
                         type="text"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
                         placeholder="Digite o nome fantasia"
-                        {...register('nm_fantasia')}/>
-                        {errors.nm_fantasia && <span>{errors.nm_fantasia.message}</span>}
+                        {...register('pessoaJuridica.nm_fantasia')}/>
+                        <p>{errors.pessoaJuridica?.nm_fantasia && <span>{errors.pessoaJuridica.nm_fantasia.message}</span>}</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -71,8 +89,8 @@ export default function PessoaJuridicaForm() {
                         type="text"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
                         placeholder="Digite a razão social"
-                        {...register('rz_social')}/>
-                        {errors.rz_social && <span>{errors.rz_social.message}</span>}
+                        {...register('pessoaJuridica.rz_social')}/>
+                        <p>{errors.pessoaJuridica?.rz_social && <span>{errors.pessoaJuridica.rz_social.message}</span>}</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -82,9 +100,9 @@ export default function PessoaJuridicaForm() {
                     <input
                         type="text"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
-                        placeholder="Digite o CNPJ"
-                        {...register('cnpj')}/>
-                        {errors.cnpj && <span>{errors.cnpj.message}</span>}
+                        placeholder="00.000.000/0000-00"
+                        {...register('pessoaJuridica.cnpj')}/>
+                        <p>{errors.pessoaJuridica?.cnpj && <span>{errors.pessoaJuridica.cnpj.message}</span>}</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -95,8 +113,8 @@ export default function PessoaJuridicaForm() {
                         type="text"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
                         placeholder="Digite a Inscrição Estadual"
-                        {...register('ie')}/>
-                        {errors.ie && <span>{errors.ie.message}</span>}
+                        {...register('pessoaJuridica.ie')}/>
+                        <p>{errors.pessoaJuridica?.ie && <span>{errors.pessoaJuridica.ie.message}</span>}</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -107,8 +125,8 @@ export default function PessoaJuridicaForm() {
                         type="email"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
                         placeholder="Digite o endereço de e-mail"
-                        {...register('email')}/>
-                        {errors.email && <span>{errors.email.message}</span>}
+                        {...register('pessoaJuridica.email')}/>
+                        <p>{errors.pessoaJuridica?.email && <span>{errors.pessoaJuridica.email.message}</span>}</p>
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -119,8 +137,8 @@ export default function PessoaJuridicaForm() {
                         type="text"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
                         placeholder="Digite o nome do contato"
-                        {...register('contato')}/>
-                        {errors && <span>{errors.contato?.message}</span>}
+                        {...register('pessoaJuridica.contato')}/>
+                        {errors.pessoaJuridica?.contato && <span>{errors.pessoaJuridica.contato.message}</span>}
                 </div>
 
                 <div className='flex flex-col gap-1'>
@@ -130,7 +148,7 @@ export default function PessoaJuridicaForm() {
                     <select
                         name="status"
                         className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none w-48'
-                        defaultValue={'ativo'}
+                        defaultValue={'pessoaJuridica.ativo'}
                         >
                         <option value="">Escolha um status</option>
                         <option value="ativo">Ativo</option>
