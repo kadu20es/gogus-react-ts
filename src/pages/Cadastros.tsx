@@ -48,7 +48,7 @@ export default function Cadastros() {
     }
 
     return (
-        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl p-8 pb-2 mt-5 bg-white">
+        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl p-8 pb-2 mt-5 bg-white h-[80vh]">
             {/* Stepper */}
             <div className="container horizontal mt-5 mb-11">
                 <Stepper

@@ -62,7 +62,7 @@ export default function PessoaJuridicaForm() {
     },[cnpjValue, setValue])
 
     return (
-        <div className="flex flex-col h-[60vh]">
+        <div className="flex flex-col h-[45vh]">
             <h1 className="text-2xl antialiased font-bold text-center">Cadastro de pessoa jurídica</h1>
             <form
                 className="flex flex-col gap-4 w-full mt-8"

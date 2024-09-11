@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './styles/global.css'
 import Cadastros from './pages/Cadastros'
+import Navigation from './components/Navigation'
 
 
 function App() {
@@ -9,9 +10,12 @@ function App() {
 
 
   return (
-    <>
+    <div className='flex flex-row'>
+      <Navigation />
       <Cadastros />
-    </>
+
+
+    </div>
   )
 }
 
