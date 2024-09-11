@@ -1,0 +1,6 @@
+<svg className='stroke-current' width="10" height="10" stroke-width="2" viewBox='0 0 10 10' aria-hidden="true">
+    <g fill-rule="evenodd">
+        <path class="opacity-0 group-hover:opacity-100 transition ease-on-out duration-200" d="m0 5h7"></path>
+        <path class="opacity-100 group-hover:transform group-hover:transform-x-1 transition ease-in-out duration-200" d-"M1 1l4 4-4 4"></path>
+    </g>
+</svg>
