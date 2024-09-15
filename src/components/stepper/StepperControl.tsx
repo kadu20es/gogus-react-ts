@@ -10,7 +10,7 @@ type Props = {
 export default function StepperControl({ passos, passoAtual, handleClick }: Props) {
 
     return (
-        <div className='container flex justify-around mt-12 mb-8 pt-4'>
+        <div className='container flex justify-around mt-8'>
             <BackButton handleClick={handleClick} passoAtual={passoAtual} text={"Retornar"}/>
 
             <NextButton handleClick={handleClick} passoAtual={passoAtual} passos={passos} text={"Avançar"}/>

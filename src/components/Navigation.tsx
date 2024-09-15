@@ -1,11 +1,12 @@
-import Menu from "./menu";
+import Menu from "./Menu";
 
 export default function Navigation() {
 
     return (
         <>
 
-            <nav className="text-slate-600 font-bold text-xl w-[13vw] h-[100vh]">
+            <nav className="text-chocolate70-color font-bold text-xl w-[13vw] h-[100vh]
+                ">
                 <Menu/>
             </nav>
         </>

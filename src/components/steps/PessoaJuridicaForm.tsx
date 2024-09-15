@@ -62,7 +62,7 @@ export default function PessoaJuridicaForm() {
     },[cnpjValue, setValue])
 
     return (
-        <div className="flex flex-col h-[45vh]">
+        <div className="text-chocolate70-color">
             <h1 className="text-2xl antialiased font-bold text-center">Cadastro de pessoa jurídica</h1>
             <form
                 className="flex flex-col gap-4 w-full mt-8"
@@ -72,10 +72,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="nm_fantasia"
-                        className="ml-4 text-slate-700 font-medium">Nome fantasia:</label>
+                        className="ml-4 font-medium">Nome fantasia:</label>
                     <input
                         type="text"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4 border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="Digite o nome fantasia"
                         {...register('pessoaJuridica.nm_fantasia')}/>
                         <p>{errors.pessoaJuridica?.nm_fantasia && <span>{errors.pessoaJuridica.nm_fantasia.message}</span>}</p>
@@ -84,10 +84,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="rz_social"
-                        className="ml-4 text-slate-700 font-medium">Razão social:</label>
+                        className="ml-4 font-medium">Razão social:</label>
                     <input
                         type="text"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4  border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="Digite a razão social"
                         {...register('pessoaJuridica.rz_social')}/>
                         <p>{errors.pessoaJuridica?.rz_social && <span>{errors.pessoaJuridica.rz_social.message}</span>}</p>
@@ -96,10 +96,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="cnpj"
-                        className="ml-4 text-slate-700 font-medium">CNPJ:</label>
+                        className="ml-4 font-medium">CNPJ:</label>
                     <input
                         type="text"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4  border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="00.000.000/0000-00"
                         {...register('pessoaJuridica.cnpj')}/>
                         <p>{errors.pessoaJuridica?.cnpj && <span>{errors.pessoaJuridica.cnpj.message}</span>}</p>
@@ -108,10 +108,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="ie"
-                       className="ml-4 text-slate-700 font-medium">Inscrição Estadual:</label>
+                       className="ml-4 font-medium">Inscrição Estadual:</label>
                     <input
                         type="text"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4  border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="Digite a Inscrição Estadual"
                         {...register('pessoaJuridica.ie')}/>
                         <p>{errors.pessoaJuridica?.ie && <span>{errors.pessoaJuridica.ie.message}</span>}</p>
@@ -120,10 +120,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="email"
-                       className="ml-4 text-slate-700 font-medium">E-mail:</label>
+                       className="ml-4 font-medium">E-mail:</label>
                     <input
                         type="email"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4  border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="Digite o endereço de e-mail"
                         {...register('pessoaJuridica.email')}/>
                         <p>{errors.pessoaJuridica?.email && <span>{errors.pessoaJuridica.email.message}</span>}</p>
@@ -132,10 +132,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="contato"
-                        className="ml-4 text-slate-700 font-medium">Contato:</label>
+                        className="ml-4 font-medium">Contato:</label>
                     <input
                         type="text"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none'
+                        className='border-b-4 border-notBrown-color shadow-sm rounded h-10 px-3 outline-none bg-transparent'
                         placeholder="Digite o nome do contato"
                         {...register('pessoaJuridica.contato')}/>
                         {errors.pessoaJuridica?.contato && <span>{errors.pessoaJuridica.contato.message}</span>}
@@ -144,10 +144,10 @@ export default function PessoaJuridicaForm() {
                 <div className='flex flex-col gap-1'>
                     <label
                         htmlFor="status"
-                        className="ml-4 text-slate-700 font-medium">Status:</label>
+                        className="ml-4 font-medium">Status:</label>
                     <select
                         name="status"
-                        className='border-b-4 border-zinc-200 shadow-sm rounded h-10 px-3 outline-none w-48'
+                        className='border-b-4 border-notBrown-color shadow-sm rounded h-10 px-3 outline-none w-48 bg-transparent'
                         defaultValue={'pessoaJuridica.ativo'}
                         >
                         <option value="">Escolha um status</option>
