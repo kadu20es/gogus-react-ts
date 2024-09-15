@@ -1,7 +1,11 @@
+import { faEdit, faSuitcase, faWallet, faUserGroup, faCalculator, faShoppingBasket, faPuzzlePiece, faBullseye } from "@fortawesome/free-solid-svg-icons";
+
 export const menuData = [
     {
+        id: '001',
         label: 'Cadastros',
         href: '/cadastros',
+        icon: faEdit,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -36,8 +40,10 @@ export const menuData = [
 
     },
     {
+        id: '002',
         label: 'Faturamento',
         href: '/faturamento',
+        icon: faSuitcase,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -72,8 +78,10 @@ export const menuData = [
 
     },
     {
+        id: '003',
         label: 'Financeiro',
         href: '/financeiro',
+        icon: faCalculator,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -108,8 +116,10 @@ export const menuData = [
 
     },
     {
+        id: '004',
         label: 'Compras',
         href: '/compras',
+        icon: faShoppingBasket,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -144,8 +154,10 @@ export const menuData = [
 
     },
     {
+        id: '005',
         label: 'Produtos',
         href: '/produtos',
+        icon: faPuzzlePiece,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -180,8 +192,10 @@ export const menuData = [
 
     },
     {
+        id: '006',
         label: 'Vendas',
         href: '/vendas',
+        icon: faBullseye,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -215,8 +229,10 @@ export const menuData = [
         ]
     },
     {
-        label: 'Recursos Humanos',
+        id: '007',
+        label: 'RH',
         href: '/rh',
+        icon: faUserGroup,
         children: [
             {
                 heading: 'Cadastros gerais',
@@ -249,6 +265,6 @@ export const menuData = [
             }
         ]
 
-    },
+    }
 
 ]

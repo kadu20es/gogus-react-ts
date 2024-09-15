@@ -66,8 +66,8 @@ export default function Stepper({ passos, passoAtual }: Props) {
         const passosState: Passo[] = passos.map((passo, indice) => ({
                 descricao: passo,
                 completado: false,
-                tocado: indice === 0,
-                selecionado: indice === 0
+                tocado: indice === 0 ? true : false,
+                selecionado: indice === 0 ? true : false,
             })
         )
 
@@ -79,18 +79,18 @@ export default function Stepper({ passos, passoAtual }: Props) {
     const displaySteps = novoPasso.map((passo, indice) => {
         return (
             <div key={indice} className={indice !== novoPasso.length -1 ? 'w-full flex items-center' : 'flex items-center'}>
-                <div className='relative flex flex-col items-center text-teal-600'>
+                <div className='translate-x-0 flex flex-col items-center text-teal-600'>
 
                     {/* cria o círculo com o número no centro */}
                     <div className={ `rounded-full transition duration-500 ease-in-out border-2
-                            border-gray-300 h-12 w-12 flex items-center justify-center py-3
-                            ${passo.selecionado ? "bg-green-500 text-white font-bold border border-green-500" : "" }`} >
+                        border-gray-300 h-12 w-12 flex items-center justify-center py-3
+                        ${passo.selecionado ? "bg-sproutGreen-color text-white font-bold border border-green-500" : "" }`} >
 
-                                {/* Exibe o número ou o sinal de checked */}
-                                {passo.completado
-                                    ? (<span className='text-white font-bold text-xl'>&#10003;</span>)
-                                    : (indice + 1)
-                                }
+                            {/* Exibe o número ou o sinal de checked */}
+                            {passo.completado
+                                ? (<span className='text-white font-bold text-xl'>&#10003;</span>)
+                                : (indice + 1)
+                            }
                     </div>
 
                     {/* Exibe a descrição abaixo do círculo */}
@@ -102,13 +102,13 @@ export default function Stepper({ passos, passoAtual }: Props) {
 
                 {/* Cria a linha entre os círculos */}
                 <div className={`flex-auto border-t-2 transition duration-500 ease-in-out
-                    ${passo.completado ? "border-green-600" : "border-gray-300"}`}></div>
+                    ${passo.completado ? "border-leavesGreen-color" : "border-gray-300"}`}></div>
             </div>
         )
     })
 
     return (
-        <div className='mx-4 flex justify-between items-center'>
+        <div className='mx-4 flex justify-between items-center mb-14'>
             {displaySteps}
         </div>
 

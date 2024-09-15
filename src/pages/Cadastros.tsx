@@ -48,14 +48,14 @@ export default function Cadastros() {
     }
 
     return (
-        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl p-8 pb-2 mt-5 bg-white h-[80vh]">
+        <div className="md:w-1/2 mx-auto mt-4 shadow-xl pt-6 rounded-2xl py-0 px-6 bg-notWhite-color h-[80vh] flex flex-col overflow-auto">
             {/* Stepper */}
-            <div className="container horizontal mt-5 mb-11">
+
                 <Stepper
                     passos={passos}
                     passoAtual={passoAtual}
                 />
-                <div className="my-10 p-10">
+
                     <StepperContext.Provider value={{
                         dadosPessoais,
                         setDadosPessoais,
@@ -68,8 +68,7 @@ export default function Cadastros() {
                     }}>
                         {exibirPasso(passoAtual)}
                     </StepperContext.Provider>
-                </div>
-            </div>
+
 
                 {/* Stepper Controls */}
             <StepperControl
