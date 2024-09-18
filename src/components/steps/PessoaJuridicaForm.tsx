@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useEffect, useState } from "react"
 import { createUserFormSchema } from "../../utils/validations"
-import { cnpjMask, cpfmask } from "../../utils/cpfMask"
+import { cnpjMask } from "../../utils/cpfMask"
 
 type CreateUserFormData = z.infer<typeof createUserFormSchema>
 
@@ -45,15 +45,6 @@ export default function PessoaJuridicaForm() {
     function createPessoaJuridica(data: any) {
         setOutput(JSON.stringify(data, null, 2))
     }
-
-    /*
-    const handleOnChange = (
-        value: string,
-        onChange: (...event: string[]) => void
-    ) => {
-        onChange(value)
-        trigger()
-    }*/
 
     const cnpjValue: string = watch("pessoaJuridica.cnpj")
 

@@ -40,3 +40,16 @@ export const cnpjMask = (cnpj: string) => {
 
     return cnpj
 }
+
+export const cepMask = (cep: string) => {
+    cep = cep.replace(/\D/g,"")
+
+    cep.slice(0,9)
+    console.log(cep)
+
+    if (cep.length >= 5) {
+        cep = cep.slice(0,5) + "-" + cep.slice(5)
+    }
+
+    return cep
+}
